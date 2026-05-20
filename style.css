@@ -1,0 +1,845 @@
+/* ============================================================
+   Vinayak Wealth — Shared Stylesheet
+   Used by: signup.html | login.html
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── RESET ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── CSS VARIABLES ── */
+:root {
+    --gold:        #B8922A;   /* deep gold — logo bars        */
+    --gold-light:  #D4AC4E;   /* mid gold — highlights        */
+    --gold-pale:   #EDD98A;   /* pale gold — borders/hover    */
+    --navy:        #0C1C45;   /* darkest navy — logo ring     */
+    --navy-mid:    #132259;   /* mid navy — logo body         */
+    --navy-light:  #1E3478;   /* lighter navy — W letter      */
+    --cream:       #FAF7EE;   /* warm off-white background    */
+    --text-muted:  #7A8FB5;   /* muted blue-grey text         */
+    --border:      rgba(184, 146, 42, 0.28);
+}
+
+/* ── BODY ── */
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* ── LAYOUT WRAPPER ── */
+#container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+/* ============================================================
+   LEFT PANEL
+   ============================================================ */
+.side1 {
+    width: 45%;
+    background: linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 60%);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 56px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Glowing orb — top right */
+.side1::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Glowing orb — bottom left */
+.side1::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Gold grid overlay */
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+}
+
+/* ── Logo ── */
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-icon {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 28px rgba(12, 28, 69, 0.45), 0 0 0 3px rgba(184, 146, 42, 0.55);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #fff;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 50%;
+}
+
+.logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.logo-name span {
+    display: block;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+}
+
+/* ── Panel headline ── */
+.panel-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.panel-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+}
+
+/* ── Gold divider ── */
+.gold-line {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 2px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Panel subtext ── */
+.panel-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 340px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 48px;
+}
+
+/* ── Stat Cards (signup page only) ── */
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s;
+}
+
+.stat-card:hover {
+    background: rgba(201, 168, 76, 0.06);
+}
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.05));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.stat-info .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+}
+
+.stat-info .lbl {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── Fund Ticker Cards (login page only) ── */
+.ticker-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.fund-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.fund-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s;
+    cursor: default;
+}
+
+.fund-card:hover {
+    background: rgba(201, 168, 76, 0.06);
+}
+
+.fund-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.fund-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.fund-dot.blue  { background: rgba(66,  133, 244, 0.18); }
+.fund-dot.green { background: rgba(52,  168, 83,  0.18); }
+.fund-dot.amber { background: rgba(251, 188, 5,   0.18); }
+
+.fund-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 2px;
+}
+
+.fund-type {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fund-return { text-align: right; }
+
+.fund-return .pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+}
+
+.fund-return .period {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   RIGHT PANEL
+   ============================================================ */
+.side2 {
+    flex: 1;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px 56px;
+    position: relative;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+/* Gold top accent bar */
+.side2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+
+/* ── Form header ── */
+.form-header {
+    margin-bottom: 24px;
+}
+
+.form-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    font-size: 14px;
+    color: #6B7A94;
+}
+
+.form-header a {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-pale);
+    transition: border-color 0.2s;
+}
+
+.form-header a:hover { border-color: var(--gold); }
+
+/* ── Google button ── */
+.btn-google {
+    width: 100%;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1.5px solid #D8DFE8;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.btn-google:hover {
+    border-color: #4285F4;
+    box-shadow: 0 4px 16px rgba(66, 133, 244, 0.15);
+    transform: translateY(-1px);
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ── OR divider ── */
+.or-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    color: #B0BAC9;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #E8EDF4;
+}
+
+/* ── 2-column form row (signup) ── */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 0;
+}
+
+/* ── Form field ── */
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.field label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    margin-bottom: 8px;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="number"] {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid #D8DFE8;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    background: #fff;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none;
+}
+
+.field input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+}
+
+.field input::placeholder { color: #B0BAC9; }
+
+/* ── Phone prefix (signup) ── */
+.phone-wrap {
+    display: flex;
+    gap: 10px;
+}
+
+.phone-prefix {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 13px 14px;
+    border: 1.5px solid #D8DFE8;
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--navy);
+    background: #F9F7F2;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.phone-wrap input { flex: 1; }
+
+/* ── Password strength bar (signup) ── */
+.strength-bar {
+    height: 3px;
+    border-radius: 2px;
+    background: #E5EAF0;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    background: var(--gold);
+    transition: width 0.3s, background 0.3s;
+}
+
+/* ── Password show/hide toggle (login) ── */
+.pw-wrap { position: relative; }
+
+.pw-wrap input {
+    padding-right: 46px;
+    width: 100%;
+}
+
+.pw-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #B0BAC9;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.pw-toggle:hover { color: var(--gold); }
+.pw-toggle svg   { width: 18px; height: 18px; }
+
+/* ── Terms checkbox row (signup) ── */
+.terms-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.terms-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--gold);
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.terms-row label {
+    font-size: 13px;
+    color: #6B7A94;
+    line-height: 1.6;
+}
+
+.terms-row a {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ── Remember me + Forgot password (login) ── */
+.remember-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.remember-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.remember-left input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+
+.remember-left label {
+    font-size: 13px;
+    color: #6B7A94;
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-pale);
+    transition: border-color 0.2s;
+}
+
+.forgot-link:hover { border-color: var(--gold); }
+
+/* ── Submit button ── */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(10, 22, 40, 0.25);
+    margin-bottom: 0;
+}
+
+/* Gold shimmer on hover */
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(10, 22, 40, 0.3);
+}
+
+.btn-submit:hover::before { opacity: 1; }
+
+.btn-submit span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Trust badges ── */
+.trust-strip {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #E8EDF4;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #8A96A8;
+    font-weight: 500;
+}
+
+.badge-icon { font-size: 14px; }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Left panel — staggered children */
+.side1 > * { animation: fadeUp 0.6s ease both; }
+
+.logo-wrap      { animation-delay: 0.05s; }
+.panel-headline { animation-delay: 0.15s; }
+.gold-line      { animation-delay: 0.20s; }
+.panel-sub      { animation-delay: 0.25s; }
+.stats          { animation-delay: 0.35s; }
+.ticker-label   { animation-delay: 0.30s; }
+.fund-cards     { animation-delay: 0.38s; }
+
+/* Right panel — staggered children */
+.side2 .form-header { animation: fadeUp 0.5s 0.10s ease both; }
+.btn-google         { animation: fadeUp 0.5s 0.18s ease both; }
+.or-divider         { animation: fadeUp 0.5s 0.22s ease both; }
+.side2 .field       { animation: fadeUp 0.5s 0.26s ease both; }
+.side2 .form-row    { animation: fadeUp 0.5s 0.26s ease both; }
+.remember-row       { animation: fadeUp 0.5s 0.30s ease both; }
+.terms-row          { animation: fadeUp 0.5s 0.30s ease both; }
+.btn-submit         { animation: fadeUp 0.5s 0.34s ease both; }
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ── Tablet Landscape: 901px – 1200px ── */
+@media (max-width: 1200px) and (min-width: 901px) {
+    .side1          { width: 42%; padding: 48px 40px; }
+    .panel-headline { font-size: 40px; }
+    .side2          { padding: 48px 44px; }
+    .form-header h1 { font-size: 32px; }
+}
+
+/* ── Tablet Portrait: 601px – 900px ── */
+@media (max-width: 900px) {
+    body       { flex-direction: column; min-height: 100vh; overflow-y: auto; }
+    #container { flex-direction: column; }
+
+    .side1 {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 32px 28px 28px;
+        min-height: unset;
+    }
+
+    .logo-wrap      { margin-bottom: 24px; }
+    .panel-headline { font-size: 32px; margin-bottom: 12px; }
+    .gold-line      { margin-bottom: 16px; }
+    .panel-sub      { font-size: 14px; margin-bottom: 24px; max-width: 100%; }
+
+    /* Stat cards — 3-col row */
+    .stats     { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .stat-card { flex: 1 1 calc(33% - 12px); min-width: 140px; padding: 14px 16px; gap: 12px; }
+    .stat-icon { width: 36px; height: 36px; font-size: 16px; }
+    .stat-info .val { font-size: 18px; }
+    .stat-info .lbl { font-size: 10px; }
+
+    /* Fund cards — row wrap */
+    .fund-cards { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .fund-card  { flex: 1 1 calc(33% - 12px); min-width: 180px; }
+
+    .side2          { padding: 36px 28px 40px; justify-content: flex-start; min-height: unset; }
+    .form-header    { margin-bottom: 22px; }
+    .form-header h1 { font-size: 30px; }
+    .form-row       { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .trust-strip    { gap: 14px; }
+}
+
+/* ── Mobile Large: 481px – 600px ── */
+@media (max-width: 600px) {
+    .side1          { padding: 28px 20px 24px; }
+    .logo-icon      { width: 90px; height: 90px; border-radius: 50%; }
+    .logo-name      { font-size: 19px; }
+    .panel-headline { font-size: 28px; }
+    .panel-sub      { font-size: 13px; margin-bottom: 18px; }
+
+    .stats     { gap: 10px; }
+    .stat-card { flex: 1 1 calc(50% - 10px); padding: 12px 14px; }
+
+    .fund-cards      { gap: 10px; }
+    .fund-card       { flex: 1 1 calc(50% - 10px); padding: 12px 14px; }
+    .fund-name       { font-size: 12px; }
+    .fund-return .pct { font-size: 17px; }
+
+    .side2          { padding: 28px 20px 36px; }
+    .form-header h1 { font-size: 26px; }
+    .form-header    { margin-bottom: 18px; }
+    .form-row       { grid-template-columns: 1fr; gap: 0; }
+
+    .btn-google    { font-size: 13px; padding: 13px 14px; gap: 10px; }
+    .or-divider    { font-size: 11px; margin-bottom: 16px; }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field input[type="number"] { padding: 12px 14px; font-size: 14px; }
+
+    .phone-prefix  { padding: 12px; font-size: 12px; }
+    .btn-submit    { padding: 15px; font-size: 14px; }
+    .trust-strip   { gap: 10px; margin-top: 20px; padding-top: 18px; }
+    .badge         { font-size: 10px; }
+}
+
+/* ── Mobile Small: ≤ 480px ── */
+@media (max-width: 480px) {
+    .side1      { padding: 22px 16px 20px; }
+    .logo-wrap  { gap: 10px; margin-bottom: 18px; }
+    .logo-icon  { width: 76px; height: 76px; border-radius: 50%; }
+    .logo-name  { font-size: 17px; }
+    .logo-name span { font-size: 9px; letter-spacing: 2px; }
+
+    .panel-headline { font-size: 24px; line-height: 1.2; }
+    .gold-line      { margin-bottom: 12px; }
+    .panel-sub      { display: none; } /* hidden on very small screens */
+
+    .stats     { gap: 8px; }
+    .stat-card { flex: 1 1 100%; padding: 12px 14px; }
+
+    .ticker-label { font-size: 9px; margin-bottom: 10px; }
+    .fund-cards   { gap: 8px; }
+    .fund-card    { flex: 1 1 100%; padding: 12px 14px; }
+
+    .side2         { padding: 24px 16px 32px; }
+    .side2::before { height: 4px; }
+    .form-header h1 { font-size: 24px; }
+    .form-header p  { font-size: 13px; }
+    .form-header    { margin-bottom: 18px; }
+
+    .btn-google  { font-size: 13px; padding: 12px; border-radius: 10px; }
+    .google-icon { width: 18px; height: 18px; }
+
+    .field       { margin-bottom: 16px; }
+    .field label { font-size: 10px; }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field input[type="number"] { padding: 11px 13px; font-size: 13px; border-radius: 9px; }
+
+    .phone-prefix { font-size: 12px; padding: 11px 10px; border-radius: 9px; }
+    .pw-toggle    { right: 12px; }
+
+    .terms-row  { margin-bottom: 20px; }
+    .terms-row label { font-size: 12px; }
+    .terms-row input[type="checkbox"] { width: 16px; height: 16px; }
+
+    .remember-left label { font-size: 12px; }
+    .forgot-link         { font-size: 12px; }
+
+    .btn-submit  { padding: 14px; font-size: 14px; border-radius: 10px; }
+    .trust-strip { gap: 8px; margin-top: 16px; padding-top: 16px; }
+    .badge       { font-size: 10px; gap: 4px; }
+}
