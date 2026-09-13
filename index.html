@@ -1237,119 +1237,50 @@
             pointer-events: none;
         }
 
-        .contact-inner {
-            /* display: grid; */
-            /* grid-template-columns: 1fr 1fr; */
-            /* gap: 80px;
-            align-items: start; */
-        }
+        
 
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
+            width: 100%;
         }
 
         .contact-item {
             display: flex;
+            flex-wrap: wrap;
             align-items: flex-start;
-            gap: 35px;
+            gap: 16px 24px;
         }
 
-        .contact-icon {
+        .contact-item .contact-icon {
             width: 48px;
             height: 48px;
-            background: rgba(184, 146, 42, 0.12);
-            border: 1px solid var(--border);
+            flex: 0 0 48px;
             border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .contact-item>div:not(.contact-icon) {
+            flex: 1 1 180px;
+            min-width: 160px;
         }
 
         .contact-item h4 {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            color: var(--gold, #c9a227);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .contact-item p {
-            font-size: 15px;
-            color: var(--cream);
+            color: var(--cream, #f4ead9);
+            font-size: 0.95rem;
             line-height: 1.5;
-        }
-
-        /* Contact form */
-        .contact-form {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-        }
-
-        .contact-form h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--cream);
-            margin-bottom: 28px;
-        }
-
-        .cf-field {
-            margin-bottom: 20px;
-        }
-
-        .cf-field label {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .cf-field input,
-        .cf-field textarea,
-        .cf-field select {
-            width: 100%;
-            padding: 13px 16px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            color: var(--cream);
-            outline: none;
-            transition: border-color 0.25s, box-shadow 0.25s;
-            resize: none;
-        }
-
-        .cf-field input::placeholder,
-        .cf-field textarea::placeholder {
-            color: rgba(122, 143, 181, 0.6);
-        }
-
-        .cf-field input:focus,
-        .cf-field textarea:focus,
-        .cf-field select:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(184, 146, 42, 0.12);
-        }
-
-        .cf-field select option {
-            background: var(--navy-mid);
-        }
-
-        .cf-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            margin: 0;
         }
 
         /* ============================================================
@@ -1535,6 +1466,21 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+             .contact-item {
+                gap: 20px 24px;
+            }
+
+            .contact-item>div:not(.contact-icon) {
+                flex-basis: 160px;
+                min-width: 140px;
+            }
+
+            .contact-item .contact-icon {
+                width: 44px;
+                height: 44px;
+                flex-basis: 44px;
+                font-size: 1.2rem;
+            }
             .why-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1588,6 +1534,22 @@
             .funds-header {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            .contact-item {
+                gap: 18px 20px;
+            }
+
+            .contact-item>div:not(.contact-icon) {
+                flex-basis: 42%;
+                min-width: 130px;
+            }
+
+            .contact-item h4 {
+                font-size: 0.78rem;
+            }
+
+            .contact-item p {
+                font-size: 0.9rem;
             }
         }
 
@@ -1648,6 +1610,20 @@
             .funds-table tbody td {
                 padding: 14px 12px;
             }
+             .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .contact-item>div:not(.contact-icon) {
+                flex-basis: 100%;
+                width: 100%;
+            }
+
+            .contact-item .contact-icon {
+                margin-bottom: -4px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1668,8 +1644,34 @@
             .section-title {
                 font-size: 30px;
             }
+            .contact-item {
+                gap: 12px;
+            }
+
+            .contact-item .contact-icon {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+                font-size: 1.05rem;
+                border-radius: 10px;
+            }
+
+            .contact-item h4 {
+                font-size: 0.72rem;
+            }
+
+            .contact-item p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
 
         }
+
+        
+
+
+        
+
     </style>
 
 </head>
